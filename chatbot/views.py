@@ -3,7 +3,7 @@ import openai, os
 from dotenv import load_dotenv
 load_dotenv()
 
-api_key=os.environ.get('OPENAI_API_KEY',None)
+api_key=os.getenv('OPENAI_KEY',None)
 
 def chatbot(request):
     chatbot_response =None
@@ -22,4 +22,4 @@ def chatbot(request):
             )
         print(response)
         chatbot_response = response["choices"][0]["text"]
-    return render(request,'main.html',{"response": chatbot_response})
+    return render(request,'index.html',{"response":chatbot_response})
